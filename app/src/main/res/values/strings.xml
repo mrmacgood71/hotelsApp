@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">HotelsApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="without_filters">Без фильтров</string>
+    <string name="close_to_center">Ближе к центру</string>
+    <string name="farther_from_center">Дальше от центра</string>
+    <string name="moreSuitesAvailable">Больше свободных мест</string>
+    <string name="lessSuitesAvailable">Меньше свободных мест</string>
+    <string name="hotels_list">Доступные отели:</string>
+    <string name="sort_by">Сортировать по:</string>
+</resources>
