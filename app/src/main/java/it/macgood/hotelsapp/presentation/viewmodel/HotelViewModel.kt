@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import it.macgood.core.network.Resource
-import it.macgood.hotelsapp.presentation.ui.hotellist.entyties.Hotel
-import it.macgood.hotelsapp.presentation.ui.details.entyties.HotelDescription
+import it.macgood.hotelsapp.domain.entyties.Hotel
+import it.macgood.hotelsapp.domain.entyties.HotelDescription
 import it.macgood.hotelsapp.domain.usecase.GetHotelUseCase
 import it.macgood.hotelsapp.domain.usecase.GetHotelsUseCase
 import it.macgood.hotelsapp.presentation.ui.hotellist.entyties.SortBy

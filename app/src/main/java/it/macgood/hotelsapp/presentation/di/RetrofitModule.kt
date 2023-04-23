@@ -1,11 +1,13 @@
 package it.macgood.hotelsapp.presentation.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.components.SingletonComponent
 import it.macgood.hotelsapp.data.api.HotelsApi
+import it.macgood.hotelsapp.domain.repository.HotelsRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -41,4 +43,5 @@ object RetrofitModule {
     fun provideApiService(retrofit: Retrofit): HotelsApi {
         return retrofit.create(HotelsApi::class.java)
     }
+
 }

@@ -1,4 +1,4 @@
-package it.macgood.hotelsapp.presentation.ui.details.entyties
+package it.macgood.hotelsapp.domain.entyties
 
 import com.google.gson.annotations.SerializedName
 

@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import it.macgood.hotelsapp.presentation.ui.hotellist.entyties.Hotel
+import it.macgood.hotelsapp.domain.entyties.Hotel
 import it.macgood.hotelsapp.R
 import it.macgood.hotelsapp.databinding.ItemHotelBinding
 

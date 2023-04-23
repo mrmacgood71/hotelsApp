@@ -1,7 +1,7 @@
 package it.macgood.hotelsapp.data.api
 
-import it.macgood.hotelsapp.presentation.ui.hotellist.entyties.Hotel
-import it.macgood.hotelsapp.presentation.ui.details.entyties.HotelDescription
+import it.macgood.hotelsapp.domain.entyties.Hotel
+import it.macgood.hotelsapp.domain.entyties.HotelDescription
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

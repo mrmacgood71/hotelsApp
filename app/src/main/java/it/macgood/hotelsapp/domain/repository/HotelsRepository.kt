@@ -1,7 +1,7 @@
 package it.macgood.hotelsapp.domain.repository
 
-import it.macgood.hotelsapp.presentation.ui.hotellist.entyties.Hotel
-import it.macgood.hotelsapp.presentation.ui.details.entyties.HotelDescription
+import it.macgood.hotelsapp.domain.entyties.Hotel
+import it.macgood.hotelsapp.domain.entyties.HotelDescription
 import retrofit2.Response
 
 interface HotelsRepository {
