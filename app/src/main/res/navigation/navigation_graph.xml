@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/hotelDetailsFragment"
         android:name="it.macgood.hotelsapp.presentation.ui.details.HotelDetailsFragment"
-        android:label="Hotel Details"
+        android:label="Об отеле"
         tools:layout="@layout/fragment_hotel_details" >
         <action
             android:id="@+id/action_hotelDetailsFragment_to_hotelListFragment"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/hotelListFragment"
         android:name="it.macgood.hotelsapp.presentation.ui.hotellist.HotelListFragment"
-        android:label="Hotels"
+        android:label="Список отелей"
         tools:layout="@layout/fragment_hotel_list" >
         <action
             android:id="@+id/action_hotelListFragment_to_hotelDetailsFragment"

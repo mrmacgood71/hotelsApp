@@ -53,14 +53,17 @@ class HotelAdapter : RecyclerView.Adapter<HotelAdapter.HotelViewHolder>() {
 
     override fun getItemCount(): Int = differ.currentList.size
 
-    private fun ItemHotelBinding.configSuitesAvailabilityExplainLegend(legend: String) {
-        if (legend.toInt() < 10) {
+    private fun ItemHotelBinding.configSuitesAvailabilityExplainLegend(suitesCount: String) {
+        if (suitesCount.toInt() < 10) {
             this.suitesAvailabilityTextView.setTextColor(Color.RED)
             this.suitesAvailabilityExplainLegendTextView.setTextColor(Color.RED)
         }
-        if (legend.endsWith("1")) {
+        if (suitesCount.endsWith("1")) {
             this.suitesAvailabilityExplainLegendTextView.text = "место осталось"
-        } else if (legend.endsWith("2") || legend.endsWith("3") || legend.endsWith("3")) {
+        } else if (suitesCount.endsWith("2")
+            || suitesCount.endsWith("3")
+            || suitesCount.endsWith("3")
+        ) {
             this.suitesAvailabilityExplainLegendTextView.text = "места осталось"
         } else {
             this.suitesAvailabilityExplainLegendTextView.text = "мест осталось"

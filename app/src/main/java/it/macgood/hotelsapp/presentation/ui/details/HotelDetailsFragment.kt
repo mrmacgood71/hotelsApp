@@ -16,6 +16,7 @@ import it.macgood.core.fragment.BaseFragment
 import it.macgood.core.network.Resource
 import it.macgood.hotelsapp.R
 import it.macgood.hotelsapp.databinding.FragmentHotelDetailsBinding
+import it.macgood.hotelsapp.presentation.Constants.BASE_IMAGE_URL
 import it.macgood.hotelsapp.presentation.viewmodel.HotelViewModel
 
 
@@ -32,11 +33,11 @@ class HotelDetailsFragment : BaseFragment() {
     ): View {
 
         binding = FragmentHotelDetailsBinding.inflate(inflater, container, false)
+        mapView = binding.mapview
 
         val hotelId = arguments?.getString("hotelId") ?: ""
 
         hotelViewModel.getHotelDescription(hotelId)
-        mapView = binding.mapview
         hotelViewModel.hotel.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
@@ -61,7 +62,7 @@ class HotelDetailsFragment : BaseFragment() {
                                 null
                             )
                             Glide.with(requireContext())
-                                .load(imageUrl + hotelDescription.image)
+                                .load(BASE_IMAGE_URL + hotelDescription.image)
                                 .error(R.drawable.file_not_found_ver_2)
                                 .into(hotelImageView)
                         }
@@ -89,9 +90,5 @@ class HotelDetailsFragment : BaseFragment() {
         super.onStart()
         MapKitFactory.getInstance().onStart()
         mapView.onStart()
-    }
-
-    companion object {
-        const val imageUrl = "https://github.com/iMofas/ios-android-test/raw/master/"
     }
 }

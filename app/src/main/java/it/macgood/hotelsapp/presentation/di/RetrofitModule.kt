@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import it.macgood.hotelsapp.data.api.HotelsApi
+import it.macgood.hotelsapp.presentation.Constants.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +17,7 @@ import javax.inject.Singleton
 object RetrofitModule {
 
     @Provides
-    fun provideBaseUrl() = "https://raw.githubusercontent.com/iMofas/ios-android-test/master/"
+    fun provideBaseUrl() = BASE_URL
 
     @Provides
     @Singleton

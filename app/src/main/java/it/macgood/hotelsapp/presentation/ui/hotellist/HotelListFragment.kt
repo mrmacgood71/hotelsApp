@@ -30,7 +30,9 @@ class HotelListFragment : BaseFragment() {
             when(response) {
                 is Resource.Success -> {
                     response.data?.let { hotels ->
-                        hotels.forEach { hotel -> hotel.countAvailable(hotel.suitesAvailability) }
+                        hotels.forEach { hotel ->
+                            hotel.suitesAvailability = countAvailable(hotel.suitesAvailability)
+                        }
                         hotelAdapter.differ.submitList(hotels)
                         binding.loadingHotelsProgressBar.visibility = View.GONE
                     }
@@ -38,7 +40,6 @@ class HotelListFragment : BaseFragment() {
                     binding.shimmerLayout.visibility = View.GONE
                 }
                 is Resource.Loading -> {
-//                    binding.loadingHotelsProgressBar.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
                     makeToast(response.message)
