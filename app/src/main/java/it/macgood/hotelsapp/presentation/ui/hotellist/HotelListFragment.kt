@@ -9,8 +9,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import it.macgood.core.fragment.BaseFragment
 import it.macgood.core.network.Resource
 import it.macgood.hotelsapp.databinding.FragmentHotelListBinding
-import it.macgood.hotelsapp.presentation.viewmodel.HotelViewModel
 import it.macgood.hotelsapp.presentation.ui.hotellist.entyties.SortBy
+import it.macgood.hotelsapp.presentation.viewmodel.HotelViewModel
 
 @AndroidEntryPoint
 class HotelListFragment : BaseFragment() {
@@ -24,6 +24,7 @@ class HotelListFragment : BaseFragment() {
     ): View? {
         binding = FragmentHotelListBinding.inflate(inflater, container, false)
         val hotelAdapter = HotelAdapter()
+        binding.hotelsRecyclerView.adapter = hotelAdapter
 
         hotelsViewModel.hotelsList.observe(viewLifecycleOwner) { response ->
             when(response) {
@@ -33,16 +34,18 @@ class HotelListFragment : BaseFragment() {
                         hotelAdapter.differ.submitList(hotels)
                         binding.loadingHotelsProgressBar.visibility = View.GONE
                     }
+                    binding.shimmerLayout.hideShimmer()
+                    binding.shimmerLayout.visibility = View.GONE
                 }
                 is Resource.Loading -> {
-                    binding.loadingHotelsProgressBar.visibility = View.VISIBLE
+//                    binding.loadingHotelsProgressBar.visibility = View.VISIBLE
                 }
                 is Resource.Error -> {
                     makeToast(response.message)
+                    binding.shimmerLayout.hideShimmer()
                 }
             }
         }
-        binding.hotelsRecyclerView.adapter = hotelAdapter
 
         configFilters()
 

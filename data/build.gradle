@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'it.macgood.hotelsapp.domain'
+    namespace 'it.macgood.hotelsapp.data'
     compileSdk targetAndroidSdk
 
     defaultConfig {
@@ -33,17 +33,19 @@ android {
 }
 
 dependencies {
-
 //    Core
     implementation Libs.Android.CoreKtx
 
-//    Retrofit
+//    Network
     implementation Libs.Network.Retrofit
     implementation Libs.Network.RetrofitGsonConverter
 
 //    Hilt
     implementation Libs.DI.Hilt
     kapt Libs.DI.HiltCompiler
+
+//    Modules
+    implementation project(":domain")
 
 //    Test
     testImplementation Libs.Test.JUnit

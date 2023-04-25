@@ -34,6 +34,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/hotelLegendImageView"
             app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/lightGrey"
             tools:text="Belleclaire Hotel" />
 
         <View
@@ -51,12 +52,12 @@
 
         <TextView
             android:id="@+id/addressLegendTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
-            android:text="Адресс:"
             android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:background="@color/lightGrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hotelNameLegendDivider"
             />
@@ -71,15 +72,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/addressLegendTextView"
             app:layout_constraintTop_toTopOf="@+id/addressLegendTextView"
+            android:background="@color/lightGrey"
             tools:text="250 West 77th Street, Manhattan" />
 
         <TextView
             android:id="@+id/ratingLegendTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="Оценка:"
+            android:background="@color/lightGrey"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/hotelAddressTextView" />
@@ -99,21 +101,22 @@
 
         <TextView
             android:id="@+id/distanceLegendTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="Расстояние от центра:"
             android:textSize="16sp"
+            android:background="@color/lightGrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ratingLegendTextView" />
 
         <TextView
             android:id="@+id/distanceTextView"
-            android:layout_width="0dp"
+            android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="2dp"
+            android:background="@color/lightGrey"
             app:layout_constraintBottom_toBottomOf="@+id/distanceLegendTextView"
             app:layout_constraintStart_toEndOf="@+id/distanceLegendTextView"
             app:layout_constraintTop_toTopOf="@+id/distanceLegendTextView"
@@ -121,12 +124,12 @@
 
         <TextView
             android:id="@+id/suitesAvailabilityLegendTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
-            android:text="Свободных мест:"
             android:textSize="16sp"
+            android:background="@color/lightGrey"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/distanceLegendTextView" />
 
@@ -139,18 +142,20 @@
             app:layout_constraintBottom_toBottomOf="@+id/suitesAvailabilityLegendTextView"
             app:layout_constraintStart_toEndOf="@+id/suitesAvailabilityLegendTextView"
             app:layout_constraintTop_toTopOf="@+id/suitesAvailabilityLegendTextView"
+            android:background="@color/lightGrey"
             tools:text="42:33:22" />
 
         <TextView
             android:id="@+id/suitesAvailabilityExplainLegendTextView"
-            android:layout_width="0dp"
+            android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/suitesAvailabilityLegendTextView"
             app:layout_constraintStart_toEndOf="@+id/suitesAvailabilityTextView"
             app:layout_constraintTop_toTopOf="@+id/suitesAvailabilityLegendTextView"
-            android:text="мест осталось" />
+            android:background="@color/lightGrey"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

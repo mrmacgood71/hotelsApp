@@ -8,18 +8,17 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import it.macgood.hotelsapp.domain.entyties.Hotel
 import it.macgood.hotelsapp.R
 import it.macgood.hotelsapp.databinding.ItemHotelBinding
 
 class HotelAdapter : RecyclerView.Adapter<HotelAdapter.HotelViewHolder>() {
 
-    private val differCallback = object : DiffUtil.ItemCallback<Hotel>() {
-        override fun areItemsTheSame(oldItem: Hotel, newItem: Hotel): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<it.macgood.hotelsapp.domain.entyties.Hotel>() {
+        override fun areItemsTheSame(oldItem: it.macgood.hotelsapp.domain.entyties.Hotel, newItem: it.macgood.hotelsapp.domain.entyties.Hotel): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Hotel, newItem: Hotel): Boolean {
+        override fun areContentsTheSame(oldItem: it.macgood.hotelsapp.domain.entyties.Hotel, newItem: it.macgood.hotelsapp.domain.entyties.Hotel): Boolean {
             return oldItem == newItem
         }
     }

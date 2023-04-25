@@ -18,13 +18,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HotelViewModel @Inject constructor (
-    val getHotelsUseCase: GetHotelsUseCase,
-    val getHotelUseCase: GetHotelUseCase
+    private val getHotelsUseCase: GetHotelsUseCase,
+    private val getHotelUseCase: GetHotelUseCase
 ) : ViewModel() {
 
     private val _hotelsList: MutableLiveData<Resource<List<Hotel>>> = MutableLiveData()
     val hotelsList: LiveData<Resource<List<Hotel>>> = _hotelsList
-
 
     private val _hotel: MutableLiveData<Resource<HotelDescription>> = MutableLiveData()
     val hotel: LiveData<Resource<HotelDescription>> = _hotel
@@ -67,18 +66,17 @@ class HotelViewModel @Inject constructor (
 
     }
 
-    private fun getHotels() = viewModelScope.launch {
-        _hotelsList.postValue(Resource.Loading())
-        val response = getHotelsUseCase.execute()
-        _hotelsList.postValue(handleHotelsResponse(response))
-    }
-
     fun getHotelDescription(id: String) = viewModelScope.launch {
         _hotel.postValue(Resource.Loading())
         val response = getHotelUseCase.execute(id)
         _hotel.postValue(handleHotelResponse(response))
     }
 
+    private fun getHotels() = viewModelScope.launch {
+        _hotelsList.postValue(Resource.Loading())
+        val response = getHotelsUseCase.execute()
+        _hotelsList.postValue(handleHotelsResponse(response))
+    }
 
     private fun handleHotelsResponse(response: Response<List<Hotel>>) : Resource<List<Hotel>> {
         if (response.isSuccessful) {

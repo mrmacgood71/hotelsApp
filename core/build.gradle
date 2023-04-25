@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'it.macgood.core'
-    compileSdk 33
+    compileSdk targetAndroidSdk
 
     defaultConfig {
         minSdk minAndroidSdk
@@ -36,12 +36,13 @@ android {
 
 dependencies {
 
+//    Core
     implementation Libs.Android.CoreKtx
     implementation Libs.Android.AppCompat
     implementation Libs.Android.Material
 
+//    Test
     testImplementation Libs.Test.JUnit
-    
     androidTestImplementation Libs.Test.ExtJUnit
     androidTestImplementation Libs.Test.EspressoCore
 }
