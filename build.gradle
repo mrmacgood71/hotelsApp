@@ -8,6 +8,8 @@ buildscript {
         def navigationVersion = '2.5.3'
         def lifecycleVersion = '2.5.1'
         def koin_version = "3.4.0"
+        def hilt_version = "2.44"
+        def retrofit_version = "2.9.0"
 
 
         Libs = [
@@ -25,21 +27,36 @@ buildscript {
                         NavigationFragment   : "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
                         NavigationUi         : "androidx.navigation:navigation-ui-ktx:$navigationVersion",
                         Material             : "com.google.android.material:material:1.7.0"],
-                DI: [
-                        KoinCore   : "io.insert-koin:koin-core:$koin_version",
-                        KoinAndroid: "io.insert-koin:koin-android:$koin_version"
+                DI     : [
+                        KoinCore    : "io.insert-koin:koin-core:$koin_version",
+                        KoinAndroid : "io.insert-koin:koin-android:$koin_version",
+                        Hilt        : "com.google.dagger:hilt-android:$hilt_version",
+                        HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version"
                 ],
-                Glide: [
-                        Glide: "com.github.bumptech.glide:glide:4.12.0",
+                Network: [
+                        Retrofit                   : "com.squareup.retrofit2:retrofit:$retrofit_version",
+                        RetrofitGsonConverter      : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+                        OkHttp3LoggingInterceptor : "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+                ],
+                Glide  : [
+                        Glide        : "com.github.bumptech.glide:glide:4.12.0",
                         GlideCompiler: "com.github.bumptech.glide:compiler:4.11.0"
 
                 ],
-                Test: [
-                        JUnit: "junit:junit:4.13.2",
-                        ExtJUnit: "androidx.test.ext:junit:1.1.5",
-                        EspressoCore: "androidx.test.espresso:espresso-core:3.5.1",
-                        KoinTest: "io.insert-koin:koin-test:$koin_version",
-                        KoinTestJUnit4: "io.insert-koin:koin-test-junit4:$koin_version"
+                Ui : [
+                        YandexMaps: "com.yandex.android:maps.mobile:4.3.1-lite",
+                        Shimmer   : "com.facebook.shimmer:shimmer:0.5.0"
+                ],
+                Test   : [
+                        TestCoroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1",
+                        JUnit          : "junit:junit:4.13.2",
+                        JUnitCore      : "org.junit.jupiter:junit-jupiter:5.8.2",
+                        MockitoCore    : "org.mockito:mockito-core:4.0.0",
+                        MockitoKotlin  : "org.mockito.kotlin:mockito-kotlin:4.0.0",
+                        ExtJUnit       : "androidx.test.ext:junit:1.1.5",
+                        EspressoCore   : "androidx.test.espresso:espresso-core:3.5.1",
+                        KoinTest       : "io.insert-koin:koin-test:$koin_version",
+                        KoinTestJUnit4 : "io.insert-koin:koin-test-junit4:$koin_version"
                 ]
         ]
     }

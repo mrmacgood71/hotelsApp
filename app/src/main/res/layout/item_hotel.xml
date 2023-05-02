@@ -12,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground"
         android:padding="8dp">
 
         <ImageView
@@ -149,9 +150,7 @@
             android:layout_marginTop="2dp"
             app:layout_constraintBottom_toBottomOf="@+id/suitesAvailabilityLegendTextView"
             app:layout_constraintStart_toEndOf="@+id/suitesAvailabilityTextView"
-            app:layout_constraintTop_toTopOf="@+id/suitesAvailabilityLegendTextView"
-            android:text="мест осталось" />
-
+            app:layout_constraintTop_toTopOf="@+id/suitesAvailabilityLegendTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

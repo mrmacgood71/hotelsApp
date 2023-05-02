@@ -41,45 +41,48 @@ android {
 
 dependencies {
 
+//    Core
     implementation Libs.Android.CoreKtx
-    implementation Libs.Android.AppCompat
-    implementation Libs.Android.Material
-    implementation Libs.Android.ConstraintLayout
 
-    //    Coroutines
+//    Coroutines
     implementation Libs.Android.CoroutinesCore
     implementation Libs.Android.CoroutinesAndroid
 
-    //    Koin
-    implementation Libs.DI.KoinCore
-    implementation Libs.DI.KoinAndroid
-    testImplementation Libs.Test.KoinTest
-    testImplementation Libs.Test.KoinTestJUnit4
+//    Network
+    implementation Libs.Network.Retrofit
+    implementation Libs.Network.RetrofitGsonConverter
+    implementation Libs.Network.OkHttp3LoggingInterceptor
 
 //    Hilt
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.dagger:hilt-android:2.44'
-    kapt 'com.google.dagger:hilt-compiler:2.44'
+    implementation Libs.DI.Hilt
+    kapt Libs.DI.HiltCompiler
 
-    //    Navigation Components
-    def navigationVersion = '2.5.3'
+//    Navigation Components
     implementation Libs.Android.NavigationFragment
     implementation Libs.Android.NavigationUi
 
-    //    Glide
+//    Glide
     implementation Libs.Glide.Glide
     kapt Libs.Glide.GlideCompiler
 
-    implementation 'com.yandex.android:maps.mobile:4.3.1-lite'
+//    Ui
+    implementation Libs.Android.AppCompat
+    implementation Libs.Android.Material
+    implementation Libs.Android.ConstraintLayout
+    implementation Libs.Ui.YandexMaps
+    implementation Libs.Ui.Shimmer
 
+//    Modules
     implementation project(":core")
+    implementation project(":domain")
+    implementation project(":data")
 
 
-    //    Test
+//    Test
     testImplementation Libs.Test.JUnit
     androidTestImplementation Libs.Test.ExtJUnit
     androidTestImplementation Libs.Test.EspressoCore
+
 }
 
 kapt {

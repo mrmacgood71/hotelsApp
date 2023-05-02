@@ -8,30 +8,35 @@
     <fragment
         android:id="@+id/hotelDetailsFragment"
         android:name="it.macgood.hotelsapp.presentation.ui.details.HotelDetailsFragment"
-        android:label="Hotel Details"
+        android:label="Об отеле"
         tools:layout="@layout/fragment_hotel_details" >
         <action
             android:id="@+id/action_hotelDetailsFragment_to_hotelListFragment"
-            app:destination="@id/hotelListFragment"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left" />
+            app:destination="@id/hotelListFragment"/>
+<!--            app:enterAnim="@anim/slide_in_left"-->
+<!--            app:exitAnim="@anim/slide_out_right"-->
+<!--            app:popEnterAnim="@anim/slide_in_right"-->
+<!--            app:popExitAnim="@anim/slide_out_left" -->
+
         <argument
             android:name="hotelId"
             app:argType="string" />
+        <argument
+            android:name="transition"
+            app:argType="string"/>
     </fragment>
     <fragment
         android:id="@+id/hotelListFragment"
         android:name="it.macgood.hotelsapp.presentation.ui.hotellist.HotelListFragment"
-        android:label="Hotels"
+        android:label="Список отелей"
         tools:layout="@layout/fragment_hotel_list" >
         <action
             android:id="@+id/action_hotelListFragment_to_hotelDetailsFragment"
-            app:destination="@id/hotelDetailsFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:destination="@id/hotelDetailsFragment"/>
+<!--            app:enterAnim="@anim/slide_in_right"-->
+<!--            app:exitAnim="@anim/slide_out_left"-->
+<!--            app:popEnterAnim="@anim/slide_in_left"-->
+<!--            app:popExitAnim="@anim/slide_out_right" -->
+
     </fragment>
 </navigation>

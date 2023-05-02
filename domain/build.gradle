@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'it.macgood.hotelsapp.domain'
+    compileSdk targetAndroidSdk
+
+    defaultConfig {
+        minSdk minAndroidSdk
+        targetSdk targetAndroidSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+}
+
+dependencies {
+
+//    Core
+    implementation Libs.Android.CoreKtx
+
+//    Retrofit
+    implementation Libs.Network.Retrofit
+    implementation Libs.Network.RetrofitGsonConverter
+
+//    Hilt
+    implementation Libs.DI.Hilt
+    kapt Libs.DI.HiltCompiler
+
+//    Test
+    testImplementation Libs.Test.JUnit
+    androidTestImplementation Libs.Test.ExtJUnit
+    androidTestImplementation Libs.Test.EspressoCore
+    testImplementation Libs.Test.TestCoroutines
+}
