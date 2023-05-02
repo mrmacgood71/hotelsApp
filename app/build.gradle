@@ -48,9 +48,12 @@ dependencies {
     implementation Libs.Android.CoroutinesCore
     implementation Libs.Android.CoroutinesAndroid
 
-//    Hilt
+//    Network
     implementation Libs.Network.Retrofit
     implementation Libs.Network.RetrofitGsonConverter
+    implementation Libs.Network.OkHttp3LoggingInterceptor
+
+//    Hilt
     implementation Libs.DI.Hilt
     kapt Libs.DI.HiltCompiler
 
@@ -67,7 +70,7 @@ dependencies {
     implementation Libs.Android.Material
     implementation Libs.Android.ConstraintLayout
     implementation Libs.Ui.YandexMaps
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation Libs.Ui.Shimmer
 
 //    Modules
     implementation project(":core")
@@ -79,6 +82,7 @@ dependencies {
     testImplementation Libs.Test.JUnit
     androidTestImplementation Libs.Test.ExtJUnit
     androidTestImplementation Libs.Test.EspressoCore
+
 }
 
 kapt {

@@ -34,8 +34,9 @@ buildscript {
                         HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version"
                 ],
                 Network: [
-                        Retrofit             : "com.squareup.retrofit2:retrofit:$retrofit_version",
-                        RetrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$retrofit_version"
+                        Retrofit                   : "com.squareup.retrofit2:retrofit:$retrofit_version",
+                        RetrofitGsonConverter      : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+                        OkHttp3LoggingInterceptor : "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
                 ],
                 Glide  : [
                         Glide        : "com.github.bumptech.glide:glide:4.12.0",
@@ -43,14 +44,19 @@ buildscript {
 
                 ],
                 Ui : [
-                        YandexMaps: "com.yandex.android:maps.mobile:4.3.1-lite"
+                        YandexMaps: "com.yandex.android:maps.mobile:4.3.1-lite",
+                        Shimmer   : "com.facebook.shimmer:shimmer:0.5.0"
                 ],
                 Test   : [
-                        JUnit         : "junit:junit:4.13.2",
-                        ExtJUnit      : "androidx.test.ext:junit:1.1.5",
-                        EspressoCore  : "androidx.test.espresso:espresso-core:3.5.1",
-                        KoinTest      : "io.insert-koin:koin-test:$koin_version",
-                        KoinTestJUnit4: "io.insert-koin:koin-test-junit4:$koin_version"
+                        TestCoroutines : "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1",
+                        JUnit          : "junit:junit:4.13.2",
+                        JUnitCore      : "org.junit.jupiter:junit-jupiter:5.8.2",
+                        MockitoCore    : "org.mockito:mockito-core:4.0.0",
+                        MockitoKotlin  : "org.mockito.kotlin:mockito-kotlin:4.0.0",
+                        ExtJUnit       : "androidx.test.ext:junit:1.1.5",
+                        EspressoCore   : "androidx.test.espresso:espresso-core:3.5.1",
+                        KoinTest       : "io.insert-koin:koin-test:$koin_version",
+                        KoinTestJUnit4 : "io.insert-koin:koin-test-junit4:$koin_version"
                 ]
         ]
     }

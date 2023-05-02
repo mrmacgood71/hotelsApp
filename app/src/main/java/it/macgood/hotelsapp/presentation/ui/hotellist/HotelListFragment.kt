@@ -5,29 +5,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 import it.macgood.core.fragment.BaseFragment
 import it.macgood.core.network.Resource
 import it.macgood.hotelsapp.databinding.FragmentHotelListBinding
 import it.macgood.hotelsapp.presentation.ui.hotellist.entyties.SortBy
-import it.macgood.hotelsapp.presentation.viewmodel.HotelViewModel
+import it.macgood.hotelsapp.presentation.utils.countAvailable
 
 @AndroidEntryPoint
 class HotelListFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHotelListBinding
-    private val hotelsViewModel: HotelViewModel by viewModels()
+    private val hotelsViewModel: HotelListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+
         binding = FragmentHotelListBinding.inflate(inflater, container, false)
-        val hotelAdapter = HotelAdapter()
+
+        val hotelAdapter = HotelAdapter {
+
+            exitTransition = MaterialElevationScale(false).apply {
+                duration = 300
+            }
+
+            reenterTransition = MaterialElevationScale(true).apply {
+                duration = 300
+            }
+        }
+
         binding.hotelsRecyclerView.adapter = hotelAdapter
 
         hotelsViewModel.hotelsList.observe(viewLifecycleOwner) { response ->
-            when(response) {
+            when (response) {
                 is Resource.Success -> {
                     response.data?.let { hotels ->
                         hotels.forEach { hotel ->
@@ -47,37 +60,36 @@ class HotelListFragment : BaseFragment() {
                 }
             }
         }
-
-        configFilters()
+        binding.configFilters()
 
         return binding.root
     }
 
-    private fun configFilters() {
-        binding.defaultFilterRadioButton.isChecked = true
-        binding.defaultFilterRadioButton.setOnClickListener {
+    private fun FragmentHotelListBinding.configFilters() {
+        defaultFilterRadioButton.isChecked = true
+        defaultFilterRadioButton.setOnClickListener {
             hotelsViewModel.sortHotelsList(SortBy.DEFAULT)
-            binding.hotelsRecyclerView.smoothScrollToPosition(0)
+            hotelsRecyclerView.smoothScrollToPosition(0)
         }
 
-        binding.closeToCenterFilterRadioButton.setOnClickListener {
+        closeToCenterFilterRadioButton.setOnClickListener {
             hotelsViewModel.sortHotelsList(SortBy.DISTANCE_TO_CENTER_ASC)
-            binding.hotelsRecyclerView.smoothScrollToPosition(0)
+            hotelsRecyclerView.smoothScrollToPosition(0)
         }
 
-        binding.fartherFromCenterFilterRadioButton.setOnClickListener {
+        fartherFromCenterFilterRadioButton.setOnClickListener {
             hotelsViewModel.sortHotelsList(SortBy.DISTANCE_TO_CENTER_DESC)
-            binding.hotelsRecyclerView.smoothScrollToPosition(0)
+            hotelsRecyclerView.smoothScrollToPosition(0)
         }
 
-        binding.moreSuitesAvailableFilterRadioButton.setOnClickListener {
+        moreSuitesAvailableFilterRadioButton.setOnClickListener {
             hotelsViewModel.sortHotelsList(SortBy.SUITES_AVAILABLE_DESC)
-            binding.hotelsRecyclerView.smoothScrollToPosition(0)
+            hotelsRecyclerView.smoothScrollToPosition(0)
         }
 
-        binding.lessSuitesAvailableFilterRadioButton.setOnClickListener {
+        lessSuitesAvailableFilterRadioButton.setOnClickListener {
             hotelsViewModel.sortHotelsList(SortBy.SUITES_AVAILABLE_ASC)
-            binding.hotelsRecyclerView.smoothScrollToPosition(0)
+            hotelsRecyclerView.smoothScrollToPosition(0)
         }
     }
 }

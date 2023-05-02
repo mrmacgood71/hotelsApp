@@ -30,6 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
@@ -49,4 +50,5 @@ dependencies {
     testImplementation Libs.Test.JUnit
     androidTestImplementation Libs.Test.ExtJUnit
     androidTestImplementation Libs.Test.EspressoCore
+    testImplementation Libs.Test.TestCoroutines
 }

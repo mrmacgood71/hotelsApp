@@ -9,4 +9,9 @@
     <string name="lessSuitesAvailable">Меньше свободных мест</string>
     <string name="hotels_list">Доступные отели:</string>
     <string name="sort_by">Сортировать по:</string>
+    <string name="hotelAddress">Адресс:</string>
+    <string name="hotelRating">Оценка:</string>
+    <string name="hotelDistance">Расстояние от центра:</string>
+    <string name="suitesAvailability">Свободных мест:</string>
+    <string name="hotelLocation">Местоположение:</string>
 </resources>

@@ -1,174 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.ui.hotellist.HotelListFragment">
 
-    <TextView
-        android:id="@+id/sortByTextView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
-        android:text="@string/sort_by"
-        android:textSize="16sp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <HorizontalScrollView
-        android:id="@+id/filterScrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:overScrollMode="never"
-        android:padding="8dp"
-        android:scrollbars="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sortByTextView">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <RadioGroup
-                android:id="@+id/filterRadioGroup"
+            <TextView
+                android:id="@+id/sortByTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:paddingStart="8dp"
+                android:text="@string/sort_by"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/defaultFilterRadioButton"
+            <HorizontalScrollView
+                android:id="@+id/filterScrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:overScrollMode="never"
+                android:padding="8dp"
+                android:scrollbars="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sortByTextView">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/background_filter_radio_button"
-                    android:button="@android:color/transparent"
-                    android:paddingStart="20dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/without_filters"
-                    android:textColor="@drawable/text_color_filter_radio_button" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/closeToCenterFilterRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/background_filter_radio_button"
-                    android:button="@android:color/transparent"
-                    android:paddingStart="20dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/close_to_center"
-                    android:textColor="@drawable/text_color_filter_radio_button" />
+                    <RadioGroup
+                        android:id="@+id/filterRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/fartherFromCenterFilterRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/background_filter_radio_button"
-                    android:button="@android:color/transparent"
-                    android:paddingStart="20dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/farther_from_center"
-                    android:textColor="@drawable/text_color_filter_radio_button" />
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/defaultFilterRadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/background_filter_radio_button"
+                            android:button="@android:color/transparent"
+                            android:paddingStart="20dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/without_filters"
+                            android:textColor="@drawable/text_color_filter_radio_button" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/moreSuitesAvailableFilterRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/background_filter_radio_button"
-                    android:button="@android:color/transparent"
-                    android:paddingStart="20dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/moreSuitesAvailable"
-                    android:textColor="@drawable/text_color_filter_radio_button" />
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/closeToCenterFilterRadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/background_filter_radio_button"
+                            android:button="@android:color/transparent"
+                            android:paddingStart="20dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/close_to_center"
+                            android:textColor="@drawable/text_color_filter_radio_button" />
 
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/lessSuitesAvailableFilterRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/background_filter_radio_button"
-                    android:button="@android:color/transparent"
-                    android:paddingStart="20dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/lessSuitesAvailable"
-                    android:textColor="@drawable/text_color_filter_radio_button" />
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/fartherFromCenterFilterRadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/background_filter_radio_button"
+                            android:button="@android:color/transparent"
+                            android:paddingStart="20dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/farther_from_center"
+                            android:textColor="@drawable/text_color_filter_radio_button" />
 
-            </RadioGroup>
-        </LinearLayout>
-    </HorizontalScrollView>
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/moreSuitesAvailableFilterRadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/background_filter_radio_button"
+                            android:button="@android:color/transparent"
+                            android:paddingStart="20dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/moreSuitesAvailable"
+                            android:textColor="@drawable/text_color_filter_radio_button" />
 
-    <TextView
-        android:id="@+id/hotelsTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="8dp"
-        android:text="@string/hotels_list"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filterScrollView" />
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/lessSuitesAvailableFilterRadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:background="@drawable/background_filter_radio_button"
+                            android:button="@android:color/transparent"
+                            android:paddingStart="20dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="@string/lessSuitesAvailable"
+                            android:textColor="@drawable/text_color_filter_radio_button" />
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:shimmer_auto_start="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hotelsTextView">
+                    </RadioGroup>
+                </LinearLayout>
+            </HorizontalScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <include layout="@layout/item_hotel_shimmer"/>
-            <include layout="@layout/item_hotel_shimmer"/>
-            <include layout="@layout/item_hotel_shimmer"/>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/hotelsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:text="@string/hotels_list"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/filterScrollView" />
 
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hotelsTextView"
+                app:shimmer_auto_start="true">
 
-    </com.facebook.shimmer.ShimmerFrameLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
+                    <include layout="@layout/item_hotel_shimmer" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hotelsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hotelsTextView" />
+                    <include layout="@layout/item_hotel_shimmer" />
 
-    <ProgressBar
-        android:id="@+id/loadingHotelsProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                    <include layout="@layout/item_hotel_shimmer" />
+                </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hotelsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:overScrollMode="never"
+                android:transitionGroup="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hotelsTextView" />
+
+            <ProgressBar
+                android:id="@+id/loadingHotelsProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>
 

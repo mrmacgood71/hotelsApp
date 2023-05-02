@@ -3,11 +3,12 @@ package it.macgood.hotelsapp
 import android.app.Application
 import com.yandex.mapkit.MapKitFactory
 import dagger.hilt.android.HiltAndroidApp
+import it.macgood.hotelsapp.presentation.utils.Constants.MAP_FACTORY_API_KEY
 
 @HiltAndroidApp
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        MapKitFactory.setApiKey("12105204-5640-4bbc-b799-eb92630661d7")
+        MapKitFactory.setApiKey(MAP_FACTORY_API_KEY)
     }
 }

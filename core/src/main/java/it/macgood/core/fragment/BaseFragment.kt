@@ -19,12 +19,4 @@ open class BaseFragment : Fragment() {
         return resources.getColor(id, requireActivity().theme)
     }
 
-    fun countAvailable(suitesAvailability: String) : String {
-        var count = 0
-        suitesAvailability.split(":").forEach{
-            if (it.isNotBlank()) count += it.toInt()
-        }
-        return count.toString()
-    }
-
 }

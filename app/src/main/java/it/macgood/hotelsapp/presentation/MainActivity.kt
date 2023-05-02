@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (isConnectedToInternet()) {
-
             setContentView(binding.root)
 
             val navHostFragment =
