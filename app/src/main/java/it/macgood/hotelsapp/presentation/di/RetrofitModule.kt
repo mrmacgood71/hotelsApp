@@ -24,9 +24,9 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun provideOkHttpClient() = OkHttpClient.Builder()
-        .connectTimeout(30, TimeUnit.SECONDS)
+        .connectTimeout(5, TimeUnit.SECONDS)
         .addInterceptor(provideHttpLoggingInterceptor())
-        .readTimeout(30, TimeUnit.SECONDS)
+        .readTimeout(5, TimeUnit.SECONDS)
         .build()
 
     @Provides

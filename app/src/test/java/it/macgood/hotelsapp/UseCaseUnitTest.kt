@@ -1,59 +1,73 @@
-package it.macgood.hotelsapp.domain
+package it.macgood.hotelsapp
 
+import dagger.Provides
+import it.macgood.hotelsapp.data.api.HotelsApi
+import it.macgood.hotelsapp.data.repository.HotelsRepositoryImpl
 import it.macgood.hotelsapp.domain.entyties.Hotel
 import it.macgood.hotelsapp.domain.entyties.HotelDescription
 import it.macgood.hotelsapp.domain.repository.HotelsRepository
-import it.macgood.hotelsapp.domain.usecase.GetHotelUseCase
-import it.macgood.hotelsapp.domain.usecase.GetHotelsUseCase
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import org.junit.Assert
 import org.junit.Test
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.net.ConnectException
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
+
 
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
+class UseCaseUnitTest {
 
-
-class UseCasesUnitTest {
-
-    @Test
-    fun shouldReturnBelleclaireHotel() = runTest {
-
-        val repository = TestRepository()
-        val response = repository.getHotelDescription("40611")
-        val useCase = GetHotelUseCase(repository = TestRepository())
-        val execute = useCase.execute("40611")
-
-        assertEquals(response.body(), execute.body())
-    }
-
-    @Test
-    fun shouldReturnAllHotels() = runTest {
-
-        val repository = TestRepository()
-        val response = repository.getHotels()
-        val useCase = GetHotelsUseCase(repository = TestRepository())
-        val execute = useCase.execute()
-
-        assertEquals(response.body(), execute.body())
-    }
-
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun shouldReturnTheSameHotels() = runTest {
 
         val repository = TestRepository()
         val response = repository.getHotels()
-        val useCase = GetHotelsUseCase(repository = TestRepository())
-        val execute = useCase.execute()
 
-//        val serverRepository = HotelsRepository
+        val serverRepository = HotelsRepositoryImpl(api)
+        val serverResponse = serverRepository.getHotels()
+        if (serverResponse.code() == 404) throw ConnectException()
+        if (serverResponse.body() == null) throw NullPointerException()
 
-        assertEquals(response.body(), execute.body())
+        Assert.assertEquals(
+            response.body(),
+            serverResponse.body()
+        )
     }
+
 }
+
+val retrofit = Retrofit.Builder()
+    .baseUrl("https://raw.githubusercontent.com/iMofasa/ios-android-test/master/")
+    .client(provideOkHttpClient())
+    .addConverterFactory(GsonConverterFactory.create())
+    .build()
+
+@Provides
+@Singleton
+fun provideHttpLoggingInterceptor() : HttpLoggingInterceptor {
+    val logging = HttpLoggingInterceptor()
+    logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+    return logging
+}
+
+fun provideOkHttpClient() = OkHttpClient.Builder()
+    .connectTimeout(1, TimeUnit.SECONDS)
+    .addInterceptor(provideHttpLoggingInterceptor())
+    .readTimeout(1, TimeUnit.SECONDS)
+    .build()
+
+val api = retrofit.create(HotelsApi::class.java)
 
 class TestRepository : HotelsRepository {
     override suspend fun getHotels(): Response<List<Hotel>> {
@@ -141,4 +155,3 @@ class TestRepository : HotelsRepository {
     }
 
 }
-

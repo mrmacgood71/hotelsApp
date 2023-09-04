@@ -40,11 +40,11 @@ class HotelDetailsFragment : BaseFragment() {
         super.onCreate(savedInstanceState)
         val transformation = MaterialContainerTransform()
         transformation.interpolator = AnimationUtils.LINEAR_INTERPOLATOR
-        sharedElementEnterTransition = MaterialContainerTransform().apply {
-            drawingViewId = R.id.fragment_container
-            duration = 500
-            scrimColor = Color.TRANSPARENT
-        }
+//        sharedElementEnterTransition = MaterialContainerTransform().apply {
+//            drawingViewId = R.id.fragment_container
+//            duration = 500
+//            scrimColor = Color.TRANSPARENT
+//        }
     }
 
     override fun onCreateView(
